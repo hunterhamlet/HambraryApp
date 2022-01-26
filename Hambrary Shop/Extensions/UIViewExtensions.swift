@@ -2,30 +2,20 @@
 //  UIViewExtensions.swift
 //  Hambrary Shop
 //
-//  Created by Hamon on 20/01/22.
+//  Created by Hamon on 22/01/22.
 //
 
 import Foundation
 import UIKit
 
 extension UIView {
-    
-    func getWidth() -> CGFloat {
-        return UIScreen.self.main.bounds.width
-    }
-    
-    func getHeigt() -> CGFloat {
-        return UIScreen.self.main.bounds.height
-    }
-    
-}
 
-extension UIViewController {
-    func getWidth() -> CGFloat {
-        return UIScreen.self.main.bounds.width
+    func getCustomFont(fontSize: CGFloat = 18) -> UIFont? {
+        return UIFont(name: "Marker Felt Wide", size: fontSize)
     }
-    
-    func getHeigt() -> CGFloat {
-        return UIScreen.self.main.bounds.height
+
+    func setOnClickFunction( tapAction: Selector? ) {
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: tapAction))
     }
+
 }
