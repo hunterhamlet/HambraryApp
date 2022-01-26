@@ -7,35 +7,52 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-    
-    private lazy var width = UIScreen.main.bounds.width
-    private lazy var height = UIScreen.main.bounds.height
-    
-    private lazy var middleWidth = width / 2
-    private lazy var middleHeight = height / 2
-    
-    private lazy var startPoint = 16
-    private lazy var endPoint  = width - 32
+class LoginViewController: BaseUIViewController {
+
+    //widgets
+    private let ivLogo: UIImageView = UIImageView()
+    private let lLibrary: UITextView = UITextView()
+    private let tfUserEmail: CustomTextField = CustomTextField(placeHolder: "Correo")
+    private let tfUserPass: CustomTextField = CustomTextField(placeHolder: "Contraseña", isPassField: true)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        print("Login view controller")
     }
-    
+
     private func setupUI() {
-        setupMainView()
-        print("widt in class: \(width)")
-        print("widt in extension: \(self.getWidth())")
+        setupLogoImage()
+        setupWelcomeLabel()
+        setupTextField()
+        setupFooter()
     }
-    
-    private func setupMainView() {
-        view.backgroundColor = .secondarySystemBackground
+
+    private func setupLogoImage() {
+        view.addSubview(ivLogo)
+        ivLogo.image = UIImage(imageLiteralResourceName: "ic_library")
+        ivLogo.addAnchorsAndCenter(centerX: true, centerY: false, width: grid * 4, height: grid * 4, left: nil, top: height / 2, right: nil, bottom: nil, withAnchor: .top, relativeToView: nil)
+        ivLogo.addAnchors(left: nil, top: 120, right: nil, bottom: nil)
     }
-    
-    private func setupLoginScreen() {
-        
+
+    private func setupWelcomeLabel() {
+        view.addSubview(lLibrary)
+        lLibrary.text = "!Bienvenidos"
+        lLibrary.textAlignment = .center
+        lLibrary.backgroundColor = .secondarySystemBackground
+        lLibrary.font = UIFont(name: titleFont, size: 30)
+        lLibrary.addAnchorsAndCenter(centerX: true, centerY: false, width: nil, height: 60, left: margin, top: margin, right: margin, bottom: nil, withAnchor: .top, relativeToView: ivLogo)
+    }
+
+    private func setupTextField() {
+        view.addSubview(tfUserEmail)
+        tfUserEmail.addAnchorsAndSize(width: nil, height: 50, left: margin, top: margin, right: margin, bottom: nil, withAnchor: .top, relativeToView: lLibrary)
+        view.addSubview(tfUserPass)
+        tfUserPass.addAnchorsAndSize(width: nil, height: 50, left: margin, top: margin, right: margin, bottom: nil, withAnchor: .top, relativeToView: tfUserEmail)
+    }
+
+    private func setupFooter() {
+
     }
 
 
